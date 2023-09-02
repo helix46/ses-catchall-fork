@@ -30,7 +30,7 @@ The trick here is that the Lambda will screen all incoming emails and look for a
 async function handler(SNSEvent, context, callback) {
     // return callback(null, { 'disposition': 'STOP_RULE' }); // uncomment this and DEPLOY to curtail an email storm
     let sesMsg = JSON.parse(SNSEvent.Records[0].Sns.Message); log(JSON.stringify(sesMsg, null, 2));
-    let originalDestination = sesMsg.mail.destination[0]; log({ originalDestination });
+    let originalDestination = sesMsg.mail.destination[0]; log({ originalDestination });}
 ```
 
 ## WORKMAIL SETUP
@@ -48,7 +48,7 @@ async function handler(SNSEvent, context, callback) {
 4. Runtime: Node.js 14.x
 5. Architecture: x86_64
 6. Click: CREATE FUNCTION
-7. In the code, replace the index.js with the `index.js` from the repo
+7. In the code, replace the index.ts with the `index.ts` from the repo
    1. Update the `config` object with your emails
    2. set `defaultEmail` to the default email user (eg: `greg@agilefrontiers.com`)
    3. set `adminEmail` to the admin user (eg: `admin@agilefrontiers.awsapps.com`)
